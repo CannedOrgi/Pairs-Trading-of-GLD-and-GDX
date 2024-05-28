@@ -73,9 +73,9 @@ positions = fillMissingData(positions);
 % Combine the 2 price series
 cl = [cl1 cl2];
 % Calculate daily returns
-dailyret = (cl - lag1(cl)) ./ lag1(cl);
+dailyret = (cl - lagger(cl)) ./ lagger(cl);
 % Calculate PnL
-pnl = sum(lag1(positions) .* dailyret, 2);
+pnl = sum(lagger(positions) .* dailyret, 2);
 
 % Calculate Sharpe ratio on the training set
 sharpeTrainset = sqrt(252) * mean(pnl(trainset(2:end))) / std(pnl(trainset(2:end)));
